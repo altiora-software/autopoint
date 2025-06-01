@@ -1,0 +1,200 @@
+.container {
+  background: linear-gradient(135deg, #1f1f1f 0%, #111111 100%);
+  color: #fff;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main {
+  width: 100%;
+  max-width: 1100px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero {
+  background: #222;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, gold, #fff8dc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.heroImage {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+.details {
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 900px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.details table {
+  width: 100%;
+  border-spacing: 1.5rem;
+}
+
+.details td {
+  vertical-align: top;
+  font-size: 1rem;
+  color: #f1f1f1;
+}
+
+.icon {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  color: gold;
+}
+
+.legal {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.ctaSection {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ctaSection h2 {
+  font-size: 1.8rem;
+  color: #f1f1f1;
+}
+
+.ctaSection p {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.ctaButton {
+  background: linear-gradient(to right, gold, #f1c40f);
+  color: #111;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+}
+
+.footer {
+  background: #111;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #888;
+  width: 100%;
+  border-top: 1px solid #333;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .details table {
+    border-spacing: 1rem;
+  }
+  .ctaSection h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.details {
+  background: #1b1b1b;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 24px rgba(255, 215, 0, 0.08);
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+.tableTitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #fff3c2;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #f1f1f1;
+}
+
+.table tr {
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.iconCell {
+  width: 32px;
+  font-size: 1.2rem;
+  text-align: center;
+  vertical-align: top;
+  padding-top: 8px;
+}
+
+.label {
+  width: 180px;
+  font-weight: 600;
+  color: #f5c542;
+  vertical-align: top;
+  padding-bottom: 12px;
+}
+
+.value {
+  vertical-align: top;
+  color: #e6e6e6;
+  padding-bottom: 12px;
+  line-height: 1.5;
+}
+
+.legal {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 1rem;
+  text-align: right;
+}
