@@ -1,0 +1,125 @@
+/* Estilos generales para la sección hero */
+.hero {
+    /* No usaremos 100vh/100vw aquí. Dejaremos que la altura de la imagen dentro determine la altura del hero */
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Asegura que nada se desborde */
+    height: auto; /* Permite que la altura se ajuste al contenido (la imagen del carrusel) */
+  }
+  
+  /* Estilos para las imágenes dentro de las diapositivas del carrusel */
+  /* Es crucial apuntar a la etiqueta <img> dentro de la estructura del carrusel. */
+  /* `:global()` se usa porque `.carousel` y `.slide` son clases que la librería 'react-responsive-carousel' maneja. */
+  .hero :global(.carousel .slide img) {
+    width: 100%; /* La imagen ocupará todo el ancho disponible de su contenedor */
+    height: 60vh; /* Altura predeterminada para pantallas grandes (ej. desktop) */
+    object-fit: cover; /* Escala la imagen para que cubra completamente el área, recortando si es necesario */
+    object-position: center; /* Intenta mantener el centro de la imagen visible al recortar */
+    display: block; /* Elimina cualquier espacio adicional que pueda aparecer debajo de las imágenes */
+  }
+  
+  /* Estilos para el overlay (texto y botón) */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white; /* Color del texto */
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente para mejorar legibilidad */
+    padding: 20px; /* Padding general */
+    box-sizing: border-box; /* Incluye el padding en el ancho/alto del elemento */
+  }
+  
+  .overlay h1 {
+    font-size: 3.5em; /* Tamaño de fuente inicial para pantallas grandes */
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Sombra para el texto para mejorar legibilidad */
+    line-height: 1.2; /* Espaciado entre líneas */
+    max-width: 90%; /* Evita que el texto sea excesivamente ancho en pantallas muy grandes */
+  }
+  
+  .ctaButton {
+    background-color: #ffe000; /* Amarillo brillante para el botón */
+    color: #333; /* Texto oscuro para buen contraste */
+    border: none;
+    border-radius: 50px; /* Forma de píldora */
+    padding: 15px 40px; /* Padding del botón */
+    font-size: 1.6em; /* Tamaño de fuente inicial para el botón */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra para el botón */
+    text-transform: uppercase; /* Texto en mayúsculas para que resalte */
+  }
+  
+  .ctaButton:hover {
+    background-color: #ffc000; /* Amarillo ligeramente más oscuro al pasar el mouse */
+    transform: translateY(-3px); /* Efecto de "levantamiento" sutil */
+  }
+  
+  /* --- Ajustes Responsivos con Media Queries --- */
+  
+  /* Para pantallas con un ancho máximo de 768px (tablets en vertical, laptops pequeñas) */
+  @media (max-width: 768px) {
+    .hero :global(.carousel .slide img) {
+      height: 45vh; /* Reduce la altura de la imagen para pantallas medianas */
+    }
+  
+    .overlay h1 {
+      font-size: 2.5em; /* Reduce el tamaño de fuente del título */
+      margin-bottom: 20px;
+    }
+  
+    .ctaButton {
+      font-size: 1.3em;
+      padding: 12px 30px;
+    }
+  }
+  
+  /* Para pantallas con un ancho máximo de 480px (teléfonos móviles) */
+  @media (max-width: 480px) {
+    .hero :global(.carousel .slide img) {
+      height: 35vh; /* Reduce aún más la altura de la imagen para móviles */
+      /* Si el auto aún se recorta mal, puedes probar: */
+      /* object-position: 50% 30%; para subirlo un poco o 50% 70% para bajarlo */
+    }
+  
+    .overlay h1 {
+      font-size: 1.8em; /* Tamaño de fuente más pequeño para el título en móvil */
+      margin-bottom: 15px;
+      padding: 0 15px; /* Añade padding horizontal para que el texto no toque los bordes */
+    }
+  
+    .ctaButton {
+      font-size: 1em; /* Tamaño de fuente más pequeño para el botón en móvil */
+      padding: 10px 25px;
+    }
+  
+    .overlay {
+      padding: 15px; /* Ajusta el padding general del overlay en móviles */
+    }
+  }
+  
+  /* Estilos para los indicadores del carrusel (puntos) */
+  .hero :global(.carousel .control-dots .dot) {
+    background: white; /* Puntos blancos */
+    opacity: 0.7;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2); /* Borde sutil */
+    width: 10px; /* Tamaño del punto */
+    height: 10px; /* Tamaño del punto */
+  }
+  
+  .hero :global(.carousel .control-dots .dot.selected) {
+    background: #ffe000; /* Amarillo para el punto seleccionado */
+    opacity: 1;
+  }
+  
+  .hero :global(.carousel .control-dots) {
+      bottom: 15px; /* Ajusta la posición de los puntos si están muy bajos o altos */
+  }

@@ -3,6 +3,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { event as gaEvent } from 'nextjs-google-analytics';
+import HeroCarousel from '@/components/HeroCarousel';
 
 const LandingAutos = () => {
   const handleCTAClick = () => {
@@ -24,6 +25,7 @@ const LandingAutos = () => {
       </Head>
 
       <div className={styles.container}>
+        <HeroCarousel />
         <main className={styles.main}>
           <section className={styles.hero}>
             <h1 className={styles.title}>Tu Auto 0km en Solo 7 Días 🚗🔥</h1>
