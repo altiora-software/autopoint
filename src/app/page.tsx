@@ -4,6 +4,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { event as gaEvent } from 'nextjs-google-analytics';
 import HeroCarousel from '@/components/HeroCarousel';
+import Navbar from '@/components/Navbar';
 
 const LandingAutos = () => {
   const handleCTAClick = () => {
@@ -25,6 +26,9 @@ const LandingAutos = () => {
       </Head>
 
       <div className={styles.container}>
+        {/* NAVBAR  */}
+        <Navbar />
+        {/* HERO  */}
         <HeroCarousel />
         <main className={styles.main}>
           <section className={styles.hero}>
