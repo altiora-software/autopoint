@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -39,4 +41,16 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+
+/* PALETA DE COLORES  */
+@theme inline {
+  --color-background: #1A1A1A;         /* fondo oscuro, como el fondo del logo */
+  --color-foreground: #F5F5F5;         /* texto claro */
+  --color-primary: #FFD700;            /* dorado principal para resaltar */
+  --color-secondary: #B0B0B0;          /* gris metalizado claro */
+  --color-dark: #2C2C2C;               /* gris oscuro */
+  --color-gradient-start: #FFD700;
+  --color-gradient-end: #B8860B;       /* dorado oscuro, efecto metálico */
 }
