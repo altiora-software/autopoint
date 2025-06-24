@@ -4,6 +4,7 @@ import BannerRutaJujuy from "@/components/BannerRuta";
 // import SectionHero from "@/components/SectionHero";
 import SectionDetails from "@/components/SectionDetails";
 import Footer from "@/components/Footer";
+import PromosOptions from "@/components/PromoOptions";
 
 // ✅ METADATOS PARA SEO AUTOMÁTICO (reemplaza el uso de <Head>)
 export const metadata = {
@@ -62,7 +63,7 @@ const LandingAutos = () => {
       <main className="flex flex-col items-center w-full max-w-6xl px-6 md:px-10 py-12 gap-20">
         {/* Sección de título, subtítulo e imagen */}
         {/* <SectionHero /> */}
-
+        <PromosOptions />
         {/* Sección con la tabla de beneficios y detalles */}
         <SectionDetails />
 
