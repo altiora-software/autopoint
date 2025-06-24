@@ -123,6 +123,7 @@ import HeroCarousel from "@/components/HeroCarousel";
 import BannerRutaJujuy from "@/components/BannerRuta";
 import SectionHero from "@/components/SectionHero";
 import SectionDetails from "@/components/SectionDetails";
+import Footer from "@/components/Footer";
 
 // ✅ METADATOS PARA SEO AUTOMÁTICO (reemplaza el uso de <Head>)
 export const metadata = {
@@ -176,6 +177,7 @@ const LandingAutos = () => {
       {/* Carrusel superior con CTA principal */}
       <HeroCarousel />
 
+      
       {/* Contenido central de la landing */}
       <main className="flex flex-col items-center w-full max-w-6xl px-6 md:px-10 py-12 gap-20">
         {/* Sección de título, subtítulo e imagen */}
@@ -190,6 +192,8 @@ const LandingAutos = () => {
 
       {/* Banner final con ubicación o refuerzo visual */}
       <BannerRutaJujuy />
+      {/* FOOTER  */}
+      <Footer />
     </div>
   );
 };

@@ -1,86 +1,90 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import styles from "../styles/Navbar.module.css";
-
-const links = [
-  { label: "Logan", href: "#logan" },
-  { label: "Cronos", href: "#cronos" },
-  { label: "Fotos", href: "#fotos" },
-  { label: "Contacto", href: "#contacto" },
-];
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Container from "./Container";
+import Image from "next/image";
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  // Detectar scroll para agregar sombra a la navbar
-  useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Scroll suave para anclas
-  const handleLinkClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault();
-    setMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
-      <div className={styles.container}>
-        <a
-          href="#"
-          className={styles.logo}
-          onClick={(e) => handleLinkClick(e, "#")}
-        >
-          AUTOPOINT
-        </a>
+    <header className="bg-background text-foreground shadow-md z-50 fixed top-0 w-full">
+      <Container className="h-16 flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center gap-3">
+          <Image
+            src="/autopoint.logo.png"
+            alt="Autopoint Logo"
+            width={140}
+            height={30}
+          />
+        </div>
 
-        <button
-          className={styles.menuToggle}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className={menuOpen ? styles.barActive : styles.bar}></span>
-          <span className={menuOpen ? styles.barActive : styles.bar}></span>
-          <span className={menuOpen ? styles.barActive : styles.bar}></span>
-        </button>
-
-        <div className={`${styles.links} ${menuOpen ? styles.open : ""}`}>
-          {links.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              onClick={(e) => handleLinkClick(e, href)}
-              className={styles.link}
-            >
-              {label}
-            </a>
-          ))}
-          <button
-            className={styles.ctaButton}
-            onClick={() => {
-              window.open(
-                "https://wa.me/5493884136771?text=Hola!%20Quiero%20mi%200km%20en%207%20d%C3%ADas%20🚗🔥",
-                "_blank"
-              );
-            }}
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#logan" className="hover:text-primary">
+            Logan
+          </a>
+          <a href="#cronos" className="hover:text-primary">
+            Cronos
+          </a>
+          <a href="#fotos" className="hover:text-primary">
+            Fotos
+          </a>
+          <a href="#contacto" className="hover:text-primary">
+            Contacto
+          </a>
+          <a
+            href="#cta"
+            className="bg-primary text-background px-4 py-2 rounded-md font-semibold hover:opacity-90 transition"
           >
             Quiero mi 0km
-          </button>
-        </div>
-      </div>
-    </nav>
+          </a>
+        </nav>
+
+        {/* Mobile button */}
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Abrir menú"
+        >
+          ☰
+        </button>
+      </Container>
+
+      {/* Mobile nav animado */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden bg-background px-4 pb-4 pt-2 text-lg font-medium space-y-6 shadow-lg text-center"
+          >
+            <a href="#logan" className="block hover:text-primary font-bold">
+              Logan
+            </a>
+            <a href="#cronos" className="block hover:text-primary font-bold">
+              Cronos
+            </a>
+            <a href="#fotos" className="block hover:text-primary font-bold">
+              Fotos
+            </a>
+            <a href="#contacto" className="block hover:text-primary font-bold">
+              Contacto
+            </a>
+            <a
+              href="#cta"
+              className="block bg-primary text-background px-4 py-2 rounded-md font-semibold text-center hover:opacity-90 transition"
+            >
+              Quiero mi 0km
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }
