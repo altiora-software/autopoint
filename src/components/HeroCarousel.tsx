@@ -3,8 +3,12 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export default function HeroCarousel() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const handleCTAClick = () => {
     window.open(
       "https://wa.me/5493884136771?text=Hola!%20Quiero%20mi%200km%20en%207%20d%C3%ADas%20🚗🔥",
@@ -25,48 +29,53 @@ export default function HeroCarousel() {
         stopOnHover={false}
         swipeable
         emulateTouch
+        onChange={(index) => setCurrentSlide(index)} // 👈 ¡acá!
       >
-        <div>
-          <Image
-            src="/carusel1.png"
-            alt="Renault Logan"
-            width={1920}
-            height={700}
-            className="w-full h-[500px] object-cover md:h-[700px]"
-            priority
-          />
-        </div>
-        <div>
-          <Image
-            src="/carusel2.logan.png"
-            alt="Fiat Cronos"
-            width={1920}
-            height={700}
-            className="w-full h-[500px] object-cover md:h-[700px]"
-          />
-        </div>
-        <div>
-          <Image
-            src="/carusel3.cronos.png"
-            alt="Interior del auto"
-            width={1920}
-            height={700}
-            className="w-full h-[500px] object-cover md:h-[700px]"
-          />
-        </div>
+        {["/carusel1.png", "/carusel2.logan.png", "/carusel3.cronos.png"].map(
+          (src, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <Image
+                src={src}
+                alt={`Slide ${idx + 1}`}
+                width={1920}
+                height={700}
+                className="w-full h-[500px] object-cover md:h-[700px]"
+                priority={idx === 0}
+              />
+            </motion.div>
+          )
+        )}
       </Carousel>
-
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-md">
-          Tu Auto 0km en Solo 7 Días
-        </h1>
-        <button
-          onClick={handleCTAClick}
-          className="mt-6 bg-primary text-background px-6 py-3 rounded-full font-bold text-lg hover:opacity-90 transition"
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide} // 👈 clave única para reiniciar la animación cada vez
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.6 }}
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
         >
-          QUIERO MI 0KM AHORA
-        </button>
-      </div>
+          <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-md">
+            <span className="text-primary">AUTOPOINT</span> te acerca tu 0km en
+            solo 7 días
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-white/90">
+            Financiación real, entrega asegurada y todos los gastos incluidos.
+          </p>
+          <button
+            onClick={handleCTAClick}
+            className="mt-6 bg-primary text-background px-6 py-3 rounded-full font-bold text-lg hover:opacity-90 transition"
+          >
+            QUIERO MI 0KM AHORA
+          </button>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
